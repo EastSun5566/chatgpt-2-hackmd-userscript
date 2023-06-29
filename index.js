@@ -2,13 +2,13 @@
 // @name         ChatGPT 2 HackMD
 // @namespace
 // @version      0.0.1
-// @description  ship stuff from chatgpt to hackmd
+// @description  ship chatGPT conversions to HackMD
 // @author       Michael Wang (https://github.com/EastSun5566)
 // @license      MIT
 // @homepageURL  https://github.com/EastSun5566
-// @supportURL   https://github.com/EastSun5566
 // @match        https://chat.openai.com/**
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=hackmd.io
+// @grant        none
 // ==/UserScript==
 
 // @ts-check
@@ -33,7 +33,7 @@
       .trim();
   }
 
-  function ship2HackMD() {
+  function ship() {
     const messages = document.querySelectorAll('.text-base');
     let text = '';
     for (const message of messages) {
@@ -58,7 +58,7 @@
     button.style.position = 'absolute';
     button.style.top = '0';
     button.style.right = '0';
-    button.addEventListener('click', ship2HackMD);
+    button.addEventListener('click', ship);
 
     const icon = document.createElement('img');
     icon.src = 'https://www.google.com/s2/favicons?sz=64&domain=hackmd.io';

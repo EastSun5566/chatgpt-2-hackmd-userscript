@@ -1,7 +1,7 @@
 {
   "name": "chatgpt-2-hackmd-userscript",
   "version": "0.0.1",
-  "description": "A user script to ship stuff from chatgpt to hackmd",
+  "description": "A userscript to ship chatGPT conversions to HackMD",
   "main": "index.js",
   "scripts": {
     "lint": "eslint . --fix"
