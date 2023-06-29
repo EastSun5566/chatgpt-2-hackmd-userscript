@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ChatGPT 2 HackMD
 // @namespace    https://github.com/EastSun5566
-// @version      0.0.4
+// @version      0.0.6
 // @description  ship some chatGPT conversions to HackMD
 // @author       Michael Wang (https://github.com/EastSun5566)
 // @license      MIT
@@ -77,11 +77,20 @@
 
     presentation.appendChild(button);
   }
-  mountButton();
 
-  const main = document.querySelector('main');
-  if (main) {
+  function initObserver() {
     const observer = new MutationObserver(() => mountButton());
-    observer.observe(main, { childList: true });
+    observer.observe(document.body, { childList: true });
   }
+
+  if (document.readyState === 'complete') {
+    initObserver();
+    mountButton();
+    return;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initObserver();
+    mountButton();
+  });
 }());
