@@ -14,7 +14,7 @@
 // @ts-check
 
 (function () {
-  /** @see {@url https://www.reddit.com/r/ChatGPT/comments/zm237o/save_your_chatgpt_conversation_as_a_markdown_file/} */
+  /** @see {@link https://www.reddit.com/r/ChatGPT/comments/zm237o/save_your_chatgpt_conversation_as_a_markdown_file} */
   function h(html) {
     return html.replace(/<p>/g, '\n\n')
       .replace(/<\/p>/g, '')
@@ -33,20 +33,38 @@
       .trim();
   }
 
-  const elements = document.querySelectorAll('.text-base');
-  let text = '';
-  for (const element of elements) {
-    if (element.querySelector('.whitespace-pre-wrap')) {
-      text += `**${element.querySelector('img') ? 'You' : 'ChatGPT'}**: ${h(element.querySelector('.whitespace-pre-wrap')?.innerHTML)}\n\n`;
+  function ship2HackMD() {
+    const messages = document.querySelectorAll('.text-base');
+    let text = '';
+    for (const message of messages) {
+      if (message.querySelector('.whitespace-pre-wrap')) {
+        text += `**${message.querySelector('img') ? 'You' : 'ChatGPT'}**: ${h(message.querySelector('.whitespace-pre-wrap')?.innerHTML)}\n\n`;
+      }
     }
+
+    const output = [
+      `[# ${document.title}](${window.location.href})`,
+      '',
+      `\`${new Date().toLocaleString()}\`\n\n`,
+      ...text.split(/\n/g).map((t) => ` > ${t}`),
+      '',
+    ].join('\n');
+    window.open(`https://hackmd.io/new?title=${encodeURIComponent(output)}`);
   }
 
-  const output = [
-    `[${document.title}](${window.location.href})`,
-    '',
-    `\`${new Date().toLocaleString()}\`\n\n`,
-    ...text.split(/\n/g).map((t) => ` > ${t}`),
-    '',
-  ].join('\n');
-  window.open(`https://hackmd.io/new?title=${encodeURIComponent(output)}`);
+  document.addEventListener('DOMContentLoaded', () => {
+    const button = document.createElement('button');
+    button.title = 'Ship to HackMD';
+    button.style.position = 'absolute';
+    button.style.top = '0';
+    button.style.right = '0';
+    button.addEventListener('click', ship2HackMD);
+
+    const icon = document.createElement('img');
+    icon.src = 'https://www.google.com/s2/favicons?sz=64&domain=hackmd.io';
+    icon.style.width = '1.5rem';
+    button.appendChild(icon);
+
+    document.querySelector('[role=presentation]')?.appendChild(button);
+  });
 }());
