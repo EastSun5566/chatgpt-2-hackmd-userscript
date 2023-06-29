@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         ChatGPT 2 HackMD
 // @namespace    https://github.com/EastSun5566
-// @version      0.0.2
-// @description  ship chatGPT conversions to HackMD
+// @version      0.0.3
+// @description  ship some chatGPT conversions to HackMD
 // @author       Michael Wang (https://github.com/EastSun5566)
 // @license      MIT
 // @homepageURL  https://github.com/EastSun5566
@@ -44,7 +44,7 @@
     }
 
     const output = [
-      `[# ${document.title}](${window.location.href})`,
+      `[${document.title}](${window.location.href})`,
       '',
       `\`${new Date().toLocaleString()}\`\n\n`,
       ...text.split(/\n/g).map((t) => ` > ${t}`),
@@ -53,18 +53,32 @@
     window.open(`https://hackmd.io/new?title=${encodeURIComponent(output)}`);
   }
 
-  const button = document.createElement('button');
-  button.title = 'Ship to HackMD';
-  button.style.position = 'absolute';
-  button.style.top = '0';
-  button.style.right = '0';
-  button.addEventListener('click', ship);
+  const BUTTON_ID = 'ship-to-hackmd';
+  function mountButton() {
+    const presentation = document.querySelector('[role=presentation]');
+    if (!presentation) return;
+    if (presentation.querySelector(`#${BUTTON_ID}`)) return;
 
-  const icon = document.createElement('img');
-  icon.src = 'https://www.google.com/s2/favicons?sz=64&domain=hackmd.io';
-  icon.style.width = '1.5rem';
-  button.appendChild(icon);
+    const button = document.createElement('button');
+    button.id = BUTTON_ID;
+    button.title = 'Ship to HackMD';
+    button.style.position = 'absolute';
+    button.style.top = '0';
+    button.style.right = '0';
+    button.addEventListener('click', ship);
 
-  const presentation = document.querySelector('[role=presentation]');
-  if (presentation) presentation.appendChild(button);
+    const icon = document.createElement('img');
+    icon.src = 'https://www.google.com/s2/favicons?sz=64&domain=hackmd.io';
+    icon.style.width = '1.5rem';
+    button.appendChild(icon);
+
+    presentation.appendChild(button);
+  }
+  mountButton();
+
+  const main = document.querySelector('main');
+  if (main) {
+    const observer = new MutationObserver(() => mountButton());
+    observer.observe(main, { childList: true });
+  }
 }());
