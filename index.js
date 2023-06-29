@@ -37,8 +37,9 @@
     const messages = document.querySelectorAll('.text-base');
     let text = '';
     for (const message of messages) {
-      if (message.querySelector('.whitespace-pre-wrap')) {
-        text += `**${message.querySelector('img') ? 'You' : 'ChatGPT'}**: ${h(message.querySelector('.whitespace-pre-wrap')?.innerHTML)}\n\n`;
+      const warp = message.querySelector('.whitespace-pre-wrap');
+      if (warp) {
+        text += `**${message.querySelector('img') ? 'You' : 'ChatGPT'}**: ${h(warp.innerHTML)}\n\n`;
       }
     }
 
@@ -65,6 +66,7 @@
     icon.style.width = '1.5rem';
     button.appendChild(icon);
 
-    document.querySelector('[role=presentation]')?.appendChild(button);
+    const presentation = document.querySelector('[role=presentation]');
+    if (presentation) presentation.appendChild(button);
   });
 }());
