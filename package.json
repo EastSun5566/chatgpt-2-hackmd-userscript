@@ -1,0 +1,20 @@
+{
+  "name": "chatgpt-2-hackmd-userscript",
+  "version": "0.0.1",
+  "description": "A user script to ship stuff from chatgpt to hackmd",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint . --fix"
+  },
+  "keywords": [
+    "chatgpt",
+    "hackmd"
+  ],
+  "author": "Michael Wang",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^7.32.0 || ^8.2.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.2"
+  }
+}
