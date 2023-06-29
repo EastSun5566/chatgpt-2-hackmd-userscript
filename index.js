@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ChatGPT 2 HackMD
 // @namespace    https://github.com/EastSun5566
-// @version      0.0.3
+// @version      0.0.4
 // @description  ship some chatGPT conversions to HackMD
 // @author       Michael Wang (https://github.com/EastSun5566)
 // @license      MIT
@@ -14,6 +14,9 @@
 // @ts-check
 
 (function () {
+  // eslint-disable-next-line no-console
+  console.log('Hi from ChatGPT 2 HackMD');
+
   /** @see {@link https://www.reddit.com/r/ChatGPT/comments/zm237o/save_your_chatgpt_conversation_as_a_markdown_file} */
   function h(html) {
     return html.replace(/<p>/g, '\n\n')
