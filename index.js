@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ChatGPT 2 HackMD
 // @namespace    https://github.com/EastSun5566
-// @version      0.0.1
+// @version      0.0.2
 // @description  ship chatGPT conversions to HackMD
 // @author       Michael Wang (https://github.com/EastSun5566)
 // @license      MIT
@@ -53,20 +53,18 @@
     window.open(`https://hackmd.io/new?title=${encodeURIComponent(output)}`);
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const button = document.createElement('button');
-    button.title = 'Ship to HackMD';
-    button.style.position = 'absolute';
-    button.style.top = '0';
-    button.style.right = '0';
-    button.addEventListener('click', ship);
+  const button = document.createElement('button');
+  button.title = 'Ship to HackMD';
+  button.style.position = 'absolute';
+  button.style.top = '0';
+  button.style.right = '0';
+  button.addEventListener('click', ship);
 
-    const icon = document.createElement('img');
-    icon.src = 'https://www.google.com/s2/favicons?sz=64&domain=hackmd.io';
-    icon.style.width = '1.5rem';
-    button.appendChild(icon);
+  const icon = document.createElement('img');
+  icon.src = 'https://www.google.com/s2/favicons?sz=64&domain=hackmd.io';
+  icon.style.width = '1.5rem';
+  button.appendChild(icon);
 
-    const presentation = document.querySelector('[role=presentation]');
-    if (presentation) presentation.appendChild(button);
-  });
+  const presentation = document.querySelector('[role=presentation]');
+  if (presentation) presentation.appendChild(button);
 }());
