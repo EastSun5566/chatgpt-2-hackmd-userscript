@@ -4,7 +4,8 @@
   "description": "A UserScript to ship some chatGPT conversions to HackMD",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint . --fix"
+    "lint": "eslint . --fix --ignore-path .gitignore"
+    "release": "npx standard-version && git push --follow-tags",
   },
   "keywords": [
     "userscript",
