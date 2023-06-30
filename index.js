@@ -46,7 +46,7 @@
     const output = [
       `[${document.title}](${window.location.href})`,
       '',
-      `\`${new Date().toLocaleString()}\`\n\n`,
+      `\`${new Date().toLocaleString()}\``,
       ...text.split(/\n/g).map((t) => ` > ${t}`),
       '',
     ].join('\n');
