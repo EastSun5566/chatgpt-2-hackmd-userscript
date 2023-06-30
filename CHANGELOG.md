@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.9](https://github.com/EastSun5566/chatgpt-2-hackmd-userscript/compare/v0.0.8...v0.0.9) (2023-06-30)
+
+
+### Features
+
+* update date format ([279546e](https://github.com/EastSun5566/chatgpt-2-hackmd-userscript/commit/279546e8b993942d8c14edd86e60084abc42bf54))
+
 ### 0.0.8 (2023-06-29)
 
 
