@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ChatGPT 2 HackMD
 // @namespace    https://github.com/EastSun5566
-// @version      0.0.8
+// @version      0.0.9
 // @description  Ship some ChatGPT conversions to HackMD
 // @author       Michael Wang (https://github.com/EastSun5566)
 // @license      MIT
