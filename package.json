@@ -12,7 +12,7 @@
     "chatgpt",
     "hackmd"
   ],
-  "author": "Michael Wang 汪東陽",
+  "author": "Michael Wang 汪東陽 (https://github.com/EastSun5566)",
   "license": "MIT",
   "devDependencies": {
     "eslint": "^7.32.0 || ^8.2.0",
