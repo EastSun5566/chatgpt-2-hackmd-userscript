@@ -77,4 +77,8 @@
 
   const observer = new MutationObserver(() => mountButton());
   observer.observe(document.body, { subtree: true, childList: true });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    mountButton();
+  });
 }());
