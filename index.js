@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ChatGPT 2 HackMD
 // @namespace    https://github.com/EastSun5566
-// @version      0.0.12
+// @version      0.0.13
 // @description  Ship some ChatGPT conversions to HackMD
 // @author       Michael Wang
 // @license      MIT
@@ -14,7 +14,10 @@
 // @ts-check
 
 (function () {
-  /** @see {@link https://www.reddit.com/r/ChatGPT/comments/zm237o/save_your_chatgpt_conversation_as_a_markdown_file} */
+  /**
+   * @param {string} html
+   * @see {@link https://www.reddit.com/r/ChatGPT/comments/zm237o/save_your_chatgpt_conversation_as_a_markdown_file}
+   */
   function h(html) {
     return html.replace(/<p>/g, '\n\n')
       .replace(/<\/p>/g, '')
@@ -72,9 +75,6 @@
 
     document.body.appendChild(button);
   }
-
-  const observer = new MutationObserver(() => mountButton());
-  observer.observe(document.body, { subtree: true, childList: true });
 
   mountButton();
 }());
