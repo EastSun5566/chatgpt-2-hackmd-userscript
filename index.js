@@ -55,16 +55,14 @@
 
   const BUTTON_ID = 'ship-to-hackmd';
   function mountButton() {
-    const presentation = document.querySelector('[role=presentation]');
-    if (!presentation) return;
-    if (presentation.querySelector(`#${BUTTON_ID}`)) return;
+    if (document.body.querySelector(`#${BUTTON_ID}`)) return;
 
     const button = document.createElement('button');
     button.id = BUTTON_ID;
     button.title = 'Ship to HackMD';
     button.style.position = 'absolute';
-    button.style.top = '0';
-    button.style.right = '0';
+    button.style.right = '1.5rem';
+    button.style.bottom = '4rem';
     button.addEventListener('click', ship);
 
     const icon = document.createElement('img');
@@ -72,7 +70,7 @@
     icon.style.width = '1.5rem';
     button.appendChild(icon);
 
-    presentation.appendChild(button);
+    document.body.appendChild(button);
   }
 
   const observer = new MutationObserver(() => mountButton());
