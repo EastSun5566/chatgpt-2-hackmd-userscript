@@ -1,6 +1,6 @@
 {
   "name": "chatgpt-2-hackmd-userscript",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "A userScript to ship some chatGPT conversions to HackMD",
   "main": "index.js",
   "scripts": {
